@@ -27,12 +27,12 @@ package() {
 
   # fixing FS#40934 here too
   sed -i 's/lcd/on/' "${pkgdir}/usr/share/phpstorm/bin/phpstorm64.vmoptions"
-  echo "-Dswing.aatext=true" >> "${pkgdir}/usr/share/phpstorm/bin/phpstorm${SUFFIX}.vmoptions"
+  echo "-Dswing.aatext=true" >> "${pkgdir}/usr/share/phpstorm/bin/phpstorm64.vmoptions"
 
   install -m 644 "${pkgdir}/usr/share/${pkgname}/lib/libpty/linux/x86_64/libpty.so" "${pkgdir}/usr/lib"
 
 
-  rm "${pkgdir}/usr/share/${pkgname}/bin/"{fsnotifier${SUFFIX},phpstorm64.vmoptions}
+  rm "${pkgdir}/usr/share/${pkgname}/bin/"{fsnotifier64,phpstorm64.vmoptions}
 
   rm -rf "${pkgdir}/usr/share/${pkgname}/bin/libyjpagent-linux*"
   rm -rf "${pkgdir}/usr/share/${pkgname}/plugins/terminal/lib/{linux,macosx,win}"
