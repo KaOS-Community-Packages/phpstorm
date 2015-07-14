@@ -1,6 +1,8 @@
 pkgname=phpstorm
+_pkgname=PhpStorm #Dir name in the tar file
+_pkgbuild=141.1912
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and Smart PHP IDE"
 arch='x86_64'
 options=(!strip)
