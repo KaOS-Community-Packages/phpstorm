@@ -1,49 +1,27 @@
 pkgname=phpstorm
-_pkgname=PhpStorm #Dir name in the tar file
-_pkgbuild=141.2402
-pkgver=9.0.1
+pkgver=2016.1
+_build=145.258.2
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
-arch='x86_64'
-options=(!strip)
-url="http://www.jetbrains.com/phpstorm/"
+arch=('x86_64')
+options=('!strip')
+url="http://www.jetbrains.com/${pkgname}/"
 license=('custom')
-depends=('bash'
-         'java-environment>=6' )
 install='phpstorm.install'
-source=("http://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
-        "phpstorm.desktop"
-        "phpstorm.sh"
-        "phpstorm.install")
-sha256sums=('99f421b1093347d00fa1b249a3c0d22846f38fe91508514156121d1c6cf719c3'
-            'e84e01936b4d1a3d909ca5f17122ccfdb071ad98cd908fd67714f784ddd05471'
-            '76fb549efe568de294a1f403f0fbc292c9e3f1201e150e491a6e31c97ab9323e'
-            '3dd0738870932c8bfafc6a47a4b2a65be5bebbaa07ce88708c750b3e51b97cb5')
+source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz
+        phpstorm.desktop)
+sha256sums=('48b3b1d4e4dec954bb224193aea367b6aa6893d286c0e022775e9f81527251ce'
+            '58de11c860bfe1233db010b57d632aad513419fc73839a035219021f06a413ec')
 
 package() {
-  install -d -m 755 "${pkgdir}/usr/share"
-  install -d -m 755 "${pkgdir}/usr/lib"
-  cp -a "${srcdir}/${_pkgname}-${_pkgbuild}" "$pkgdir/usr/share/${pkgname}"
-
-  install -m 644 "${pkgdir}/usr/share/${pkgname}/bin/libyjpagent-linux64.so" "${pkgdir}/usr/lib"
-
-  # fixing FS#40934 here too
-  sed -i 's/lcd/on/' "${pkgdir}/usr/share/phpstorm/bin/phpstorm64.vmoptions"
-  echo "-Dswing.aatext=true" >> "${pkgdir}/usr/share/phpstorm/bin/phpstorm64.vmoptions"
-
-  install -m 644 "${pkgdir}/usr/share/${pkgname}/lib/libpty/linux/x86_64/libpty.so" "${pkgdir}/usr/lib"
-
-
-  rm "${pkgdir}/usr/share/${pkgname}/bin/"{fsnotifier64,phpstorm64.vmoptions}
-
-  rm -rf "${pkgdir}/usr/share/${pkgname}/bin/libyjpagent-linux*"
-  rm -rf "${pkgdir}/usr/share/${pkgname}/plugins/terminal/lib/{linux,macosx,win}"
-
-  sed -i 's/^M/\n/g' "${srcdir}/${_pkgname}-${_pkgbuild}/license/${_pkgname}_license.txt"
-  echo >> "${srcdir}/${_pkgname}-${_pkgbuild}/license/${_pkgname}_license.txt"
-
-  install -D -m 755 "${srcdir}/phpstorm.sh" "${pkgdir}/usr/bin/phpstorm.sh"
-  install -D -m 644 "${srcdir}/phpstorm.desktop" "${pkgdir}/usr/share/applications/phpstorm.desktop"
-  install -D -m 644 "${pkgdir}/usr/share/${pkgname}/bin/webide.png" "${pkgdir}/usr/share/pixmaps/phpstorm.png"
-  install -D -m 644 "${srcdir}/${_pkgname}-${_pkgbuild}/license/${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+  install -d -m 755 ${pkgdir}/opt/
+  cp -a ${srcdir}/PhpStorm-${_build} $pkgdir/opt/${pkgname}
+  sed -i 's/lcd/on/' $pkgdir/opt/${pkgname}/bin/phpstorm64.vmoptions
+  echo "-Dswing.aatext=true" >> $pkgdir/opt/${pkgname}/bin/phpstorm64.vmoptions
+  install -d -m 755 ${pkgdir}/usr/bin/
+  ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
+  install -d -m 755 ${pkgdir}/usr/share/applications/
+  install -D -m 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/
+  install -d -m 755 ${pkgdir}/usr/share/pixmaps/
+  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/webide.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
