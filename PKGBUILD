@@ -1,16 +1,16 @@
 pkgname=phpstorm
-pkgver=2016.1
-_build=145.258.2
+pkgver=2017.1.3
+_build=171.4424.11
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
 options=('!strip')
-url="http://www.jetbrains.com/${pkgname}/"
+url="http://www.jetbrains.com/phpstorm/"
 license=('custom')
 install='phpstorm.install'
 source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz
         phpstorm.desktop)
-sha256sums=('48b3b1d4e4dec954bb224193aea367b6aa6893d286c0e022775e9f81527251ce'
+sha256sums=('1bc8b34a668101fc9b6299ebb2a990a242317d194c1095088474c343b4183bcd'
             '58de11c860bfe1233db010b57d632aad513419fc73839a035219021f06a413ec')
 
 package() {
@@ -23,5 +23,5 @@ package() {
   install -d -m 755 ${pkgdir}/usr/share/applications/
   install -D -m 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/
   install -d -m 755 ${pkgdir}/usr/share/pixmaps/
-  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/webide.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/phpstorm.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
