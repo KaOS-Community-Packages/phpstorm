@@ -1,27 +1,29 @@
 pkgname=phpstorm
-pkgver=2017.1.3
-_build=171.4424.11
+pkgver=2017.1.4
+_build=171.4694.2
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
 options=('!strip')
-url="http://www.jetbrains.com/phpstorm/"
-license=('custom')
+url="https://www.jetbrains.com/phpstorm/"
+license=('custom: https://www.jetbrains.com/company/useterms.html')
 install='phpstorm.install'
-source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz
-        phpstorm.desktop)
-sha256sums=('1bc8b34a668101fc9b6299ebb2a990a242317d194c1095088474c343b4183bcd'
-            '58de11c860bfe1233db010b57d632aad513419fc73839a035219021f06a413ec')
+source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
+        "${pkgname}.desktop")
+md5sums=('1aa6f479b6edb92586388acb0b8e73a2'
+         'eee7cb12e0c77e817187a48e405999e7')
 
 package() {
-  install -d -m 755 ${pkgdir}/opt/
-  cp -a ${srcdir}/PhpStorm-${_build} $pkgdir/opt/${pkgname}
-  sed -i 's/lcd/on/' $pkgdir/opt/${pkgname}/bin/phpstorm64.vmoptions
-  echo "-Dswing.aatext=true" >> $pkgdir/opt/${pkgname}/bin/phpstorm64.vmoptions
-  install -d -m 755 ${pkgdir}/usr/bin/
-  ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
-  install -d -m 755 ${pkgdir}/usr/share/applications/
-  install -D -m 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/
-  install -d -m 755 ${pkgdir}/usr/share/pixmaps/
-  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/phpstorm.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -d -m 755 ${pkgdir}/opt/
+    install -d -m 755 ${pkgdir}/usr/bin/
+    install -d -m 755 ${pkgdir}/usr/share/applications/
+    install -d -m 755 ${pkgdir}/usr/share/icons/hicolor/128x128/apps/
+    
+    cp -a ${srcdir}/PhpStorm-${_build} ${pkgdir}/opt/${pkgname}
+    sed -i 's/lcd/on/' ${pkgdir}/opt/${pkgname}/bin/phpstorm64.vmoptions
+    echo "-Dswing.aatext=true" >> ${pkgdir}/opt/${pkgname}/bin/phpstorm64.vmoptions
+
+    ln -s /opt/${pkgname}/bin/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+    install -D -m 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/
+    install -D -m 644 ${pkgdir}/opt/${pkgname}/bin/${pkgname}.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
 }
