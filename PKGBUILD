@@ -1,6 +1,6 @@
 pkgname=phpstorm
-pkgver=2017.3.2
-_build=173.4127.29
+pkgver=2017.3.4
+_build=173.4548.32
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
@@ -8,9 +8,10 @@ options=('!strip')
 url="https://www.jetbrains.com/phpstorm/"
 license=('custom: https://www.jetbrains.com/company/useterms.html')
 install='phpstorm.install'
+depends=('openjdk')
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('46f1afd14ce9f1303798eda559c8b12b'
+md5sums=('8dcc189fea69bd15186738507328efe3'
          'eee7cb12e0c77e817187a48e405999e7')
 
 package() {
@@ -19,7 +20,9 @@ package() {
     install -d -m 755 ${pkgdir}/usr/share/applications/
     install -d -m 755 ${pkgdir}/usr/share/icons/hicolor/128x128/apps/
     
-    cp -a ${srcdir}/PhpStorm-${_build} ${pkgdir}/opt/${pkgname}
+    cd ${srcdir}
+    rm -rf PhpStorm-${_build}/jre64
+    cp -a PhpStorm-${_build} ${pkgdir}/opt/${pkgname}
     sed -i 's/lcd/on/' ${pkgdir}/opt/${pkgname}/bin/phpstorm64.vmoptions
     echo "-Dswing.aatext=true" >> ${pkgdir}/opt/${pkgname}/bin/phpstorm64.vmoptions
 
