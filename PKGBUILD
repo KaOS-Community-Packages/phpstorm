@@ -11,7 +11,7 @@ install='phpstorm.install'
 depends=('openjdk')
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('7987d0ec4495f8594ef6295f1797c1c1'
+md5sums=('cb281e71126850df44f9857058f168ab'
          'eee7cb12e0c77e817187a48e405999e7')
 
 package() {
