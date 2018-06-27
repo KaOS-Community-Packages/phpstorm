@@ -1,6 +1,6 @@
 pkgname=phpstorm
 pkgver=2018.1.6
-_build=181.4668.78
+_build=181.5281.35
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
