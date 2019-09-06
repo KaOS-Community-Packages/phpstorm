@@ -1,7 +1,7 @@
 
 pkgname=phpstorm
-pkgver=2019.2
-_build=192.5728.108
+pkgver=2019.2.1
+_build=192.6262.66
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
@@ -12,7 +12,7 @@ install='phpstorm.install'
 depends=('openjdk')
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('d3690d8e701dcc086061ec5ea8da0962'
+md5sums=('b55131db61ff5718ad0172c43362f55e'
          'eee7cb12e0c77e817187a48e405999e7')
 
 package() {
@@ -22,7 +22,7 @@ package() {
     install -d -m 755 ${pkgdir}/usr/share/icons/hicolor/128x128/apps/
     
     cd ${srcdir}
-    rm -rf PhpStorm-${_build}/jre64
+    rm -rf PhpStorm-${_build}/jbr
     cp -a PhpStorm-${_build} ${pkgdir}/opt/${pkgname}
     sed -i 's/lcd/on/' ${pkgdir}/opt/${pkgname}/bin/phpstorm64.vmoptions
     echo "-Dswing.aatext=true" >> ${pkgdir}/opt/${pkgname}/bin/phpstorm64.vmoptions
