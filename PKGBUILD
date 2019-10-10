@@ -1,7 +1,7 @@
 
 pkgname=phpstorm
-pkgver=2019.2.1
-_build=192.6262.66
+pkgver=2019.2.3
+_build=192.6817.20
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
@@ -12,7 +12,7 @@ install='phpstorm.install'
 depends=('openjdk')
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('b55131db61ff5718ad0172c43362f55e'
+md5sums=('0391a56b6588b9cf677c288334af4626'
          'eee7cb12e0c77e817187a48e405999e7')
 
 package() {
