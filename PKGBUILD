@@ -1,7 +1,7 @@
 
 pkgname=phpstorm
-pkgver=2020.1.4
-_build=201.8743.18
+pkgver=2020.2
+_build=202.6397.115
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
