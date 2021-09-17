@@ -1,6 +1,6 @@
 pkgname=phpstorm
-pkgver=2021.2.1
-_build=212.5080.71
+pkgver=2021.2.2
+_build=212.5284.49
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
@@ -11,7 +11,7 @@ install='phpstorm.install'
 depends=('openjdk')
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('5e855a628a08f10ca01d9d068327b679'
+md5sums=('2387b16753a1ecb7c6cf8567830141a2'
          'eee7cb12e0c77e817187a48e405999e7')
 
 package() {
