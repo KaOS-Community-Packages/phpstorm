@@ -8,7 +8,6 @@ options=('!strip')
 url="https://www.jetbrains.com/phpstorm/"
 license=('custom: https://www.jetbrains.com/company/useterms.html')
 install='phpstorm.install'
-depends=('openjdk')
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
 md5sums=('27353e28bf4748783f0278a2d9fa52d0'
