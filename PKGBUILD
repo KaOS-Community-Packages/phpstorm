@@ -1,6 +1,6 @@
 pkgname=phpstorm
-pkgver=2022.2.2
-_build=222.4167.33
+pkgver=2022.2.3
+_build=222.4345.15
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom: https://www.jetbrains.com/company/useterms.html')
 install='phpstorm.install'
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('19e82f68e4f21fe7f5a44962d978174c'
+md5sums=('dbe3c2843982e27b488ec4ce20d9f4cb'
          'eee7cb12e0c77e817187a48e405999e7')
 
 package() {
