@@ -1,6 +1,6 @@
 pkgname=phpstorm
-pkgver=2023.1
-_build=231.8109.199
+pkgver=2023.1.1
+_build=231.8770.68
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom: https://www.jetbrains.com/company/useterms.html')
 install='phpstorm.install'
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('b9c648d6425c7529312f36454c9c9a28'
+md5sums=('851431a8a9ff6f285cc06563bd65b8f3'
          'eee7cb12e0c77e817187a48e405999e7')
 
 package() {
