@@ -1,8 +1,8 @@
 pkgname=phpstorm
 pkgver=2023.2.1
 _build=232.9559.64
-pkgrel=1
-pkgdesc="Lightweight and Smart PHP IDE"
+pkgrel=2
+pkgdesc="Lightning-smart PHP IDE"
 arch=('x86_64')
 options=('!strip')
 url="https://www.jetbrains.com/phpstorm/"
@@ -11,7 +11,7 @@ install='phpstorm.install'
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
 md5sums=('18a2f318177c3da7ae8e4bed93bbf963'
-         'eee7cb12e0c77e817187a48e405999e7')
+         'edb8c8f0a9899081c16a789014922c1a')
 
 package() {
     install -d -m 755 ${pkgdir}/opt/
