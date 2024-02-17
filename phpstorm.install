@@ -1,10 +1,37 @@
+#!/bin/bash
+
+desktop=$(ps -e | grep kwin)
+timestamp=$( date +%F-%T )
+
 post_install() {
+if [[ -n ${desktop} ]]; then
+        KDE_SESSION_VERSION=6 KDE_FULL_SESSION=true  kdialog --yesno "You can buy a license after the 30-day trial period here:<br>
+        http://www.jetbrains.com/phpstorm/buy/<br>
+        Also Educational license are available.<br><br>
+        Do you want to save this output?"
+
+        save=${?}
+
+        if [[ ${save} == 1 ]]; then
+
+            kdialog --msgbox "Output not saved"
+
+        else
+
+            echo -e "====================================================\nYou can buy a license after the 30-day trial period here:\nhttp://www.jetbrains.com/phpstorm/buy/\nAlso Educational license are available.\n====================================================" > /var/log/phpstorm_install_${timestamp}.txt
+
+            kdialog --msgbox "Output is saved in /var/log/phpstorm_install_${timestamp}.txt"
+            
+        fi   
+
+    else
+        echo -e "====================================================\nYou can buy a license after the 30-day trial period here:\nhttp://www.jetbrains.com/phpstorm/buy/\nAlso Educational license are available.\n===================================================="
+    fi
+}
+post_upgrade() {
     echo "===================================================="
     echo "You can buy a license after the 30-day trial period here:"
     echo "http://www.jetbrains.com/phpstorm/buy/"
     echo "Also Educational license are available."
     echo "===================================================="
-}
-post_upgrade() {
-    post_install $1
 }
