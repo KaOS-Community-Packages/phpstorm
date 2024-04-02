@@ -1,8 +1,8 @@
 pkgname=phpstorm
 pkgver=2023.3.6
-_build=2233.15026.1
+_build=233.15026.12
 _pkgdir=PhpStorm-${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning-smart PHP IDE"
 arch=('x86_64')
 options=('!strip')
