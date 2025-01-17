@@ -1,6 +1,6 @@
 pkgname=phpstorm
-pkgver=2024.3.1.1
-_build=243.22562.233
+pkgver=2024.3.2
+_build=243.23654.115
 _pkgdir=PhpStorm-${_build}
 pkgrel=1
 pkgdesc="Lightning-smart PHP IDE"
@@ -11,7 +11,7 @@ license=('custom: https://www.jetbrains.com/company/useterms.html')
 install='phpstorm.install'
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('28f43b01200e5f9f02225fa53127df48'
+md5sums=('225a42be57e1dc9b098192278b085bcd'
          'edb8c8f0a9899081c16a789014922c1a')
 
 package() {
