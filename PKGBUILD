@@ -1,6 +1,6 @@
 pkgname=phpstorm
-pkgver=2024.3.5
-_build=243.26053.13
+pkgver=2025.1.0.1
+_build=251.23774.466
 _pkgdir=PhpStorm-${_build}
 pkgrel=1
 pkgdesc="Lightning-smart PHP IDE"
@@ -11,7 +11,7 @@ license=('custom: https://www.jetbrains.com/company/useterms.html')
 install='phpstorm.install'
 source=("https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('ec446314b3a2a7e8bd43223fc1d678c4'
+md5sums=('a19d751f33b643eeb253542a5ecf5fbf'
          'edb8c8f0a9899081c16a789014922c1a')
 
 package() {
@@ -20,7 +20,7 @@ package() {
     install -dm 755 ${pkgdir}/usr/share/applications/
     install -dm 755 ${pkgdir}/usr/share/icons/hicolor/scalable/apps/
     
-#    rm -rf ${_pkgdir}/jbr # DO NOT COMMIT IF UNCOMMENTED, only if you have installed jdk/openjdk version >= 16 in your system
+#     rm -rf ${_pkgdir}/jbr # DO NOT COMMIT IF UNCOMMENTED, only if you have installed jdk/openjdk version >= 16 in your system
     rsync -rtl "${_pkgdir}"/ ${pkgdir}/opt/${pkgname}
 
     ln -s /opt/${pkgname}/bin/${pkgname} ${pkgdir}/usr/bin/${pkgname}
